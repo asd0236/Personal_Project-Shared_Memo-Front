@@ -2,6 +2,11 @@ var notebookNameElement = document.getElementById('notebookName');
 var notebookName = '동적으로 변경될 노트북 이름';
 notebookNameElement.textContent = notebookName;
 
+// "로그인" 버튼을 클릭할 때의 동작 설정
+document.getElementById('loginButton').addEventListener('click', function() {
+    window.location.href = 'loginPage.html'; // 로그인 페이지로 이동
+});
+
 // 포스트 내용을 담고 있는 배열 (서버에서 받아온 것으로 가정)
 const postsData = [
     {
@@ -45,3 +50,4 @@ function addPostsToPage() {
 
 // 페이지가 로드될 때 포스트를 추가
 window.addEventListener('load', addPostsToPage);
+

@@ -53,3 +53,14 @@ footer {
     flex-grow: 1;
 }
 
+#loginButton, #homeButton {
+    position: absolute;
+    top: 10px; /* 원하는 상단 여백 조정 */
+    right: 10px; /* 원하는 우측 여백 조정 */
+    padding: 10px 20px;
+    background-color:  #f4f4f4;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
