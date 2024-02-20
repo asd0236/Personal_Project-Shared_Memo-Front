@@ -1,0 +1,55 @@
+/* 기본 스타일 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header, footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+main {
+    display: flex;
+}
+
+#posts {
+    flex: 2;
+    padding: 20px;
+}
+
+#sidebar {
+    flex: 1;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+footer {
+    text-align: center;
+}
+
+/* 추가한 부분 */
+.post {
+    display: flex;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.thumbnail {
+    flex: 0 0 150px; /* 네모 박스의 너비를 조정합니다. */
+}
+
+.thumbnail img {
+    width: 100%;
+    height: auto;
+}
+
+.post-content {
+    padding: 20px;
+    flex-grow: 1;
+}
+
