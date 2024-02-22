@@ -40,7 +40,7 @@ loginForm.addEventListener('submit', function (event) {
             console.log(data);
             alert(data.resultString)
             if (data.isSuccess) {
-                // window.location.href= "mainPage.html";
+                window.location.href= "mainPage.html";
             }
         })
         .catch(error => {

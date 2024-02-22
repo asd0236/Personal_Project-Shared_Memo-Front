@@ -1,13 +1,62 @@
 const apiURL = 'http://localhost:8080/';
 const baseURL = 'http://localhost:5000/';
 
-var notebookNameElement = document.getElementById('notebookName');
-var notebookName = '동적으로 변경될 노트북 이름';
-notebookNameElement.textContent = notebookName;
+// 페이지 로드 시 로그인 상태 확인
+var isLogin = false;
 
-// "로그인" 버튼을 클릭할 때의 동작 설정
-document.getElementById('loginButton').addEventListener('click', function () {
-    window.location.href = 'loginPage.html'; // 로그인 페이지로 이동
+// GET
+fetch(apiURL + 'session-login/info', {
+    credentials: 'include'
+})
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        if (data.memberId != null) {
+            isLogin = true;
+            updateNotebookName(isLogin);
+            updateSignButton(isLogin);
+        }
+    })
+    .catch(error => {
+        console.error('정보 조회 실패:', error);
+    });
+
+function updateNotebookName(isLogin) {
+    var notebookNameElement = document.getElementById('notebookName');
+    notebookNameElement.textContent = isLogin ? '로그인 완료' : '우리 공유 메모장';
+}
+
+function updateSignButton(isLogin) {
+    var signButton = document.getElementById('signButton');
+    if (isLogin) {
+        signButton.textContent = '로그아웃';
+    } else {
+        signButton.textContent = '로그인';
+    }
+}
+
+// "로그인 or 로그아웃" 버튼을 클릭할 때의 동작 설정
+var signButton = document.getElementById('signButton');
+
+signButton.addEventListener('click', function () {
+    if (isLogin == false) // 로그인중일 경우
+        window.location.href = 'loginPage.html'; // 로그인 페이지로 이동
+
+    else { // 로그인중이 아닐 경우
+        fetch(apiURL + 'session-login/logout', {
+            credentials: "include"
+        })
+            .then(() => {
+                alert('로그아웃이 완료되었습니다.');
+                isLogin = false;
+                updateNotebookName(isLogin);
+                updateSignButton(isLogin);
+                window.location.href = 'mainPage.html';
+            })
+            .catch(error => {
+                console.error('로그아웃 실패:', error);
+            });
+    }
 });
 
 // 포스트 내용을 담고 있는 배열 (서버에서 받아온 것으로 가정)
@@ -51,20 +100,6 @@ function addPostsToPage() {
         postsContainer.appendChild(postElement);
     });
 }
-
-
-// GET
-fetch(apiURL + 'session-login/info', {
-    credentials: 'include'
-})
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-    })
-    .catch(error => {
-        console.error('정보 조회 실패:', error);
-    });
-
 
 // 페이지가 로드될 때 포스트를 추가
 window.addEventListener('load', addPostsToPage);

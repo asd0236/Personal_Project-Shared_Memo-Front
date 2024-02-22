@@ -53,7 +53,7 @@ footer {
     flex-grow: 1;
 }
 
-#loginButton, #homeButton {
+#signButton, #homeButton {
     position: absolute;
     top: 10px; /* 원하는 상단 여백 조정 */
     right: 10px; /* 원하는 우측 여백 조정 */
