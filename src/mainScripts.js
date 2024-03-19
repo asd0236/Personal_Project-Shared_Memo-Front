@@ -258,6 +258,7 @@ function addMemo(notebookId) {
   const postsContainer = document.getElementById("posts");
 
   const memoElement = document.createElement("article");
+
   memoElement.classList.add("memo");
 
   const memoContentElement = document.createElement("div");
@@ -290,7 +291,7 @@ function openAddMemoModal(notebookId) {
         <label for="memoTitle">제목:</label>
         <input type="text" id="memoTitle" name="memoTitle" required><br><br>
         <label for="memoContent">본문:</label><br>
-        <textarea id="memoContent" name="memoContent" rows=30% cols=106% required></textarea><br><br>
+        <textarea id="memoContent" name="memoContent" required></textarea><br><br>
         <button type="submit">등록</button>
     </form>
     `;
