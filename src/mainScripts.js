@@ -318,6 +318,7 @@ function openAddMemoModal(notebookId) {
 
     // 메모 데이터를 서버로 전송
     fetch(apiURL + "memo/add/" + notebookId, {
+      credentials: "include",
       method: "POST",
       headers: {
         // @ModelAttribute를 사용했기 때문에 json형태로 전송 X
