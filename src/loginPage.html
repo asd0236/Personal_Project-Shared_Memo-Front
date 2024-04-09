@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="ko"><head>
+<html lang="ko">
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인 - 우리 공유 메모장</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <header>
         <h1>우리 공유 메모장</h1>
@@ -24,6 +27,14 @@
                 </div>
                 <button type="submit">로그인</button>
             </form>
+            <br>
+            <button id="kakaoSubmit">카카오로 로그인</button>
+
+            <script>
+                document.getElementById("kakaoSubmit").addEventListener("click", function () {
+                    window.location.href = "https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=21b09f3407c6f25a3f403afa8ce399e9&redirect_uri=http://localhost:8080/login/oauth2/code/kakao";
+                });
+            </script>
             <p>아직 회원이 아니신가요? <a href="signUpPage.html">회원 가입</a></p>
         </div>
     </main>
@@ -32,4 +43,5 @@
     </footer>
     <script src="loginScripts.js"></script>
 </body>
+
 </html>
