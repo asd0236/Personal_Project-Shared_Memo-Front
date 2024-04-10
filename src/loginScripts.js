@@ -46,3 +46,10 @@ loginForm.addEventListener("submit", function (event) {
       console.error("로그인 실패:", error);
     });
 });
+
+// 카카오 로그인
+document.getElementById("kakaoSubmit").addEventListener("click", function () {
+  window.location.href = "https://kauth.kakao.com/oauth/authorize?response_type=code&"
+  + "client_id=21b09f3407c6f25a3f403afa8ce399e9&redirect_uri=http://localhost:8080/login/oauth2/code/kakao";
+  
+}); 
